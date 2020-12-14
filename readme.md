@@ -4,12 +4,12 @@ This repository contains the code used in my presentation Make Smarter Automatio
 
 ## The presentation
 
-I'll put a link here as soon as it's available on youtube.
+I'll put a link here as soon as it's available on YouTube.
 
 The presentation slides are in the pdf in this repository.
 
 ## The automated dollhouse
-The doll house was borrowed from my kids. It had two 3d-printed lamps, a magnetic door sensor and an LDR light detector. All connected to a single NodeMCU running ESP-home which made it a breeze to build and integrate in my demo Home Assistant instance running in a docker container.
+The dollhouse was borrowed from my kids. It had two 3d-printed lamps, a magnetic door sensor and an LDR light detector. All connected to a single NodeMCU running ESP-home which made it a breeze to build and integrate in my demo Home Assistant instance running in a docker container.
 
 Here's a video of my technology test run:
 https://www.youtube.com/watch?v=r4bDM6cE1ik
@@ -39,7 +39,7 @@ trigger:
   - platform: state
     entity_id: binary_sensor.door
   - platform: time
-    at: 04:00
+    at: '04:00'
   - platform: time
     at: '22:00'
 
@@ -108,7 +108,7 @@ action:
       - service: light.turn_off
         entity_id: light.right_light
 
-    # Note that you can add actions after the chooser which will run regardles of which branch
+    # Note that you can add actions after the chooser which will run regardless of which branch
     # was taken (unless that branch stops the automation).
     # I didn't need that, so it's not included in the example.
 ```
@@ -153,4 +153,4 @@ and also include the same condition in the condition:
 ```
 
 ## More
-SlackerLabs on Youtube has a video titled [Build Smarter Automations in Home Assistant Using Scripts](https://www.youtube.com/watch?v=RIGQy8ZmEf4). I found it after submiting my talk idea to the conference, but it was actually published five days before. It describes another way to simplify automations and reuse code. Take a look! Our two methods could definitely be combined for added benefit.
+SlackerLabs on Youtube has a video titled [Build Smarter Automations in Home Assistant Using Scripts](https://www.youtube.com/watch?v=RIGQy8ZmEf4). I found it after submitting my talk idea to the conference, but it was actually published five days before. It describes another way to simplify automations and reuse code. Take a look! Our two methods could definitely be combined for added benefit.
