@@ -1,0 +1,49 @@
+esphome:
+  name: porchlights
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret SSID
+  password: !secret password
+  fast_connect: true
+  output_power: 15
+  manual_ip:
+    static_ip: 192.168.0.111
+    gateway: 192.168.0.1
+    subnet: 255.255.255.0
+
+logger:
+api:
+ota:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+    name: door
+    device_class: door
+  - platform: gpio
+    pin:
+      number: D6
+      mode: INPUT_PULLUP
+      inverted: True
+    name: sunlight
+    device_class: light
+
+output:
+  - platform: gpio
+    pin: D7
+    id: gpio_right
+  - platform: gpio
+    pin: D8
+    id: gpio_left
+
+light:
+  - platform: binary
+    name: Right light
+    output: gpio_right
+  - platform: binary
+    name: Left light
+    output: gpio_left

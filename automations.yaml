@@ -1,0 +1,157 @@
+- id: '1607725307101'
+  alias: '1: Lights on when sun goes down'
+  description: ''
+  trigger:
+  - type: no_light
+    platform: device
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: binary_sensor.sunlight
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607725335632'
+  alias: '2: Lights off when sun goes up'
+  description: ''
+  trigger:
+  - type: light
+    platform: device
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: binary_sensor.sunlight
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607725375305'
+  alias: '3: Lights off at 10 PM'
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607725400744'
+  alias: '4: Lights on at 4 AM'
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607725500214'
+  alias: '5: Lights on if door is opened in the night'
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: binary_sensor.door
+    domain: binary_sensor
+  condition:
+  - type: is_no_light
+    condition: device
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: binary_sensor.sunlight
+    domain: binary_sensor
+  action:
+  - type: turn_on
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607725625601'
+  alias: '6: Turn off light when door is closed in the night'
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: binary_sensor.door
+    domain: binary_sensor
+  condition:
+  - condition: not
+    conditions:
+    - condition: time
+      after: 04:00
+      before: '22:00'
+  action:
+  - type: turn_off
+    device_id: 070e92293c736c7aa51faa1ae0ab2b14
+    entity_id: light.left_light
+    domain: light
+  mode: single
+- id: '1607726050050'
+  alias: Right Light Automation
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.sunlight
+  - platform: state
+    entity_id: binary_sensor.door
+  - platform: time
+    at: 04:00
+  - platform: time
+    at: '22:00'
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: light.right_light
+    from: unavailable
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - type: is_light
+        condition: device
+        device_id: 070e92293c736c7aa51faa1ae0ab2b14
+        entity_id: binary_sensor.sunlight
+        domain: binary_sensor
+      sequence:
+      - type: turn_off
+        device_id: 070e92293c736c7aa51faa1ae0ab2b14
+        entity_id: light.right_light
+        domain: light
+    - conditions:
+      - condition: time
+        after: 04:00
+        before: '22:00'
+      sequence:
+      - type: turn_on
+        device_id: 070e92293c736c7aa51faa1ae0ab2b14
+        entity_id: light.right_light
+        domain: light
+    - conditions:
+      - type: is_open
+        condition: device
+        device_id: 070e92293c736c7aa51faa1ae0ab2b14
+        entity_id: binary_sensor.door
+        domain: binary_sensor
+      sequence:
+      - type: turn_on
+        device_id: 070e92293c736c7aa51faa1ae0ab2b14
+        entity_id: light.right_light
+        domain: light
+    default:
+    - type: turn_off
+      device_id: 070e92293c736c7aa51faa1ae0ab2b14
+      entity_id: light.right_light
+      domain: light
+  mode: single
