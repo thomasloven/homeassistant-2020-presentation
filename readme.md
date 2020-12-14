@@ -28,10 +28,12 @@ There's also a blueprint available [here](https://gist.github.com/thomasloven/40
 alias: Right Light Automation
 
 # The automation will do The Right Thing (TM) no matter when it's executed or what triggers it.
-# So we can pretty much sprinkle in any trigger we can think of that MAY change any input state which our end state depends on.
+# So we can pretty much sprinkle in any trigger we can think of that MAY change any input state
+# which our end state depends on.
 # And also any trigger that indicate that the light MAY be in the wrong state.
 trigger:
-    # A state trigger with neither to or from specified will trigger on ANY state change for that entity, i.e. both when it starts detecting and stops detecting sunlight.
+    # A state trigger with neither to or from specified will trigger on ANY state change for
+    # that entity, i.e. both when it starts detecting and stops detecting sunlight.
   - platform: state
     entity_id: binary_sensor.sunlight
   - platform: state
@@ -41,18 +43,21 @@ trigger:
   - platform: time
     at: '22:00'
 
-    # When Home Assistant starts up, the state of the light may be wrong or unknown, so we may want to run the automation then too.
+    # When Home Assistant starts up, the state of the light may be wrong or unknown, so we may
+    # want to run the automation then too.
   - platform: homeassistant
     event: start
 
-    # This is very useful for devices with bad connections. As soon as they become available the automation runs and makes it assume the correct state.
+    # This is very useful for devices with bad connections. As soon as they become available the
+    # automation runs and makes it assume the correct state.
   - platform: state
     entity_id: light.right_light
     from: unavailable
 
 
 # For clarity in my demonstration I used no conditions.
-# You may, however, want to check that e.g. the sunlight or door sensors actually have a defined state (as opposed to Undefined).
+# You may, however, want to check that e.g. the sunlight or door sensors actually have a defined
+# state (as opposed to Undefined).
 condition: []
 
 
@@ -67,9 +72,12 @@ action:
           - service: light.turn_off
             entity_id: light.right_light
 
-      # Remember that the chooser runs the first branch which matches. That means anything below here will only happen if the condition above failed, i.e. if and only if it's dark outside.
+      # Remember that the chooser runs the first branch which matches. That means anything below
+      # here  will only happen if the condition above failed, i.e. if and only if it's dark
+      # outside.
 
-      # If the sun is down, the lights should be on IF it's not in the middle of the night, so that's what's checked next.
+      # If the sun is down, the lights should be on IF it's not in the middle of the night,
+      # so that's what's checked next.
       - conditions:
           - condition: time
             after: '04:00'
@@ -78,8 +86,10 @@ action:
           - service: light.turn_on
             entity_id: light.right_light
 
-      # Again, the next case only happens if both of the above ones are not true. Here that means if it's dark outside, and it IS in the middle of the night.
-      # In that case we want the light to be on only if the door is open, so that's what we check next.
+      # Again, the next case only happens if both of the above ones are not true. Here that
+      # means if it's dark outside, and it IS in the middle of the night.
+      # In that case we want the light to be on only if the door is open, so that's what we
+      # check next.
       - conditions:
         - condition: state
           entity_id: binary_sensor.door
@@ -89,12 +99,17 @@ action:
             entity_id: light.right_light
 
     # The default case runs only if no other case is true.
-    # I chose the default case such that we can use that as the final state case (dark outside, middle of the night, door closed) as well, but that may not be what you want. The default case is also what you will get in any situation you have overlooked (like a sensor value is undefined, perhaps?), and if that's not the same state as your last one, you need to add a final check for your known case.
+    # I chose the default case such that we can use that as the final state case (dark outside,
+    # middle of the night, door closed) as well, but that may not be what you want. The default
+    # case is also what you will get in any situation you have overlooked (like a sensor value
+    # is undefined, perhaps?), and if that's not the same state as your last one, you need to
+    # add a final check for your known case.
     default:
       - service: light.turn_off
         entity_id: light.right_light
 
-    # Note that you can add actions after the chooser which will run regardles of which branch was taken (unless that branch stops the automation).
+    # Note that you can add actions after the chooser which will run regardles of which branch
+    # was taken (unless that branch stops the automation).
     # I didn't need that, so it's not included in the example.
 ```
 
