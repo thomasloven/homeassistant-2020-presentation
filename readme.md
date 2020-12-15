@@ -152,5 +152,22 @@ and also include the same condition in the condition:
             entity_id: light.right_light
 ```
 
+### Halving the number of automations
+In an answer to a question I mentioned pretty much halving the number of my automation the moment `choose` was introduced.
+
+This is easy for things like a motion sensor turning a light on or off. In such simple cases, you don't even need to consider the delay twice (as above). Instead you add the motion sensor detecting motion as a trigger, and also the motion sensor not detecting motion for a set time.
+
+Then in the chooser, you just look at the current state of the motion sensor. If it is currently triggered, turn the light on, otherwise off.
+
+### The chooser being useful for trigger controlled automations too
+While my talk was about state controlled automations, there was a lot of focus on the `choose` action.
+
+A neat trigger controlled automation trick with the chooser is controlling several lights with the same button.
+
+I have my ESP-home desk light controlled by the Zigbee button which is directly paired to my ceiling lights in the office (the direct pairing means it communicates directly to the bulb, and will keep working even without Home Assistant).
+Despite the direct pairing, the button still sends events to Home Assistant which I can trigger on.
+
+Another example of the chooser in an automation is [setting the radio station and controlling volume with a Xiaomi Magic Cube](https://gist.github.com/thomasloven/a41d5085da55ea03544148b14c5d197b) (don't worry - you can bet I'll be making a blueprint for that...).
+
 ## More
 SlackerLabs on Youtube has a video titled [Build Smarter Automations in Home Assistant Using Scripts](https://www.youtube.com/watch?v=RIGQy8ZmEf4). I found it after submitting my talk idea to the conference, but it was actually published five days before. It describes another way to simplify automations and reuse code. Take a look! Our two methods could definitely be combined for added benefit.
