@@ -171,3 +171,5 @@ Another example of the chooser in an automation is [setting the radio station an
 
 ## More
 SlackerLabs on Youtube has a video titled [Build Smarter Automations in Home Assistant Using Scripts](https://www.youtube.com/watch?v=RIGQy8ZmEf4). I found it after submitting my talk idea to the conference, but it was actually published five days before. It describes another way to simplify automations and reuse code. Take a look! Our two methods could definitely be combined for added benefit.
+
+Several weeks later, I also found this video [How to Build Smarter Home Assistant Automations With Choose](https://www.youtube.com/watch?v=Zcp2zccYUJ0) from the same channel, which also employs the same techniques.
