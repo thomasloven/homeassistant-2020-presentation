@@ -3,10 +3,22 @@
 This repository contains the code used in my presentation Make Smarter Automations - Not More Automations in the [Home Assistant Conference 2020](https://www.home-assistant.io/conference/).
 
 ## The presentation
-
-I'll put a link here as soon as it's available on YouTube.
+A recording of my presentation will be made available shortly on the [Home Assistant](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w) YouTube channel.
 
 The presentation slides are in the pdf in this repository.
+
+## Important correction
+I spent a whole section of my talk explaining that you need to take special care for time interval conditions that span across midning.
+
+**THIS IS ENTIRELY UNTRUE!** Home Assistant handles time intervals crossing midnight perfectly in the way intuition says it should, and the following condition **will** pass after 10 PM and before 4 AM:
+
+```yaml
+condition: time
+after: 22:00
+before: 04:00
+```
+
+Things like appdaemon or node-red may work differently, though. I do not know.
 
 ## The automated dollhouse
 The dollhouse was borrowed from my kids. It had two 3d-printed lamps, a magnetic door sensor and an LDR light detector. All connected to a single NodeMCU running ESP-home which made it a breeze to build and integrate in my demo Home Assistant instance running in a docker container.
