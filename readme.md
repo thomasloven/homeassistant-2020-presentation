@@ -4,7 +4,8 @@ This repository contains the code used in my presentation Make Smarter Automatio
 
 ## The presentation
 
-[![Recording of the presentation](https://img.youtube.com/vi/OIkZWF5uGxk/0.jpg)](https://www.youtube.com/watch?v=OIkZWF5uGxk&list=PLKsVm4cWHDQDGRXnybFUOLlcDWPsroGGB&index=8).
+[![Recording of the presentation](https://img.youtube.com/vi/OIkZWF5uGxk/0.jpg)](https://www.youtube.com/watch?v=OIkZWF5uGxk&list=PLKsVm4cWHDQDGRXnybFUOLlcDWPsroGGB&index=8)  
+[Recording of the presentation](https://www.youtube.com/watch?v=OIkZWF5uGxk&list=PLKsVm4cWHDQDGRXnybFUOLlcDWPsroGGB&index=8)
 
 
 
