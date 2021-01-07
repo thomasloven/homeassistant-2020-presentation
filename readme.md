@@ -3,7 +3,12 @@
 This repository contains the code used in my presentation Make Smarter Automations - Not More Automations in the [Home Assistant Conference 2020](https://www.home-assistant.io/conference/).
 
 ## The presentation
-A recording of my presentation will be made available shortly on the [Home Assistant YouTube channel](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w).
+
+[![Recording of the presentation](https://img.youtube.com/vi/OIkZWF5uGxk/0.jpg)](https://www.youtube.com/watch?v=OIkZWF5uGxk&list=PLKsVm4cWHDQDGRXnybFUOLlcDWPsroGGB&index=8).
+
+
+
+Make sure to also check out all the other awesome talks at the [Home Assistant YouTube channel](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w).
 
 The presentation slides are in the pdf in this repository.
 
