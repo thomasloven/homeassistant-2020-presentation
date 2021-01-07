@@ -3,7 +3,7 @@
 This repository contains the code used in my presentation Make Smarter Automations - Not More Automations in the [Home Assistant Conference 2020](https://www.home-assistant.io/conference/).
 
 ## The presentation
-A recording of my presentation will be made available shortly on the [Home Assistant](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w) YouTube channel.
+A recording of my presentation will be made available shortly on the [Home Assistant YouTube channel](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w).
 
 The presentation slides are in the pdf in this repository.
 
@@ -27,6 +27,8 @@ Here's a video of my technology test run:
 https://www.youtube.com/watch?v=r4bDM6cE1ik
 
 The ESP-home program is in `porchlights.yaml` in this repository.
+
+Since I had planned to create all automations live, I also hacked in the ability to make an `input_select` act as the system clock so we wouldn't have to wait until 10 PM came around. The code for this is the worst mess of duct taped cr*p I ever McGyvered together, and will *not* be made public.
 
 ## Final Automation
 
